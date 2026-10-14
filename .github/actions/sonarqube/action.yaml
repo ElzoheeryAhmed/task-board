@@ -1,0 +1,31 @@
+name: SonarQube scan
+description: Run a SonarQube analysis and fail the job if the quality gate fails
+
+inputs:
+  sonar-token:
+    description: SonarQube token
+    required: true
+  sonar-host-url:
+    description: SonarQube server URL
+    required: true
+  project-key:
+    description: SonarQube project key
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: SonarQube scan
+      uses: SonarSource/sonarqube-scan-action@d209202bc7d53ff1cc128f7f907dac145c9d6ae9
+      env:
+        SONAR_TOKEN: ${{ inputs.sonar-token }}
+        SONAR_HOST_URL: ${{ inputs.sonar-host-url }}
+      
+
+    - name: SonarQube quality gate
+      uses: SonarSource/sonarqube-quality-gate-action@v1
+      with:
+        pollingTimeoutSec: 300      
+      env:
+        SONAR_TOKEN: ${{ inputs.sonar-token }}
+        SONAR_HOST_URL: ${{ inputs.sonar-host-url }}

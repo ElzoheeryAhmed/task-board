@@ -1,0 +1,25 @@
+# Secrets and local config
+.env
+.env.*
+*.pem
+*.key
+
+# Image tarballs (kind load image-archive, docker save)
+*.tar
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# Node
+node_modules/
+dist/
+build/
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store

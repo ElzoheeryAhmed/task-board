@@ -1,0 +1,10 @@
+name: Gitleaks scan
+description: Scan using trivy
+
+runs:
+  using: composite
+  steps:
+    - name: Run Gitleaks
+      uses: gitleaks/gitleaks-action@v2
+      env:
+        GITHUB_TOKEN: ${{ github.token }}

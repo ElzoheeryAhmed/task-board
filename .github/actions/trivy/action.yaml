@@ -1,0 +1,53 @@
+name: Trivy scan
+description: with Trivy
+
+inputs:
+  scan-type:
+    description: "fs (source/dependencies/k8s manifests) or image (container image tarball)"
+    required: true  #must added
+  target:
+    description: "Path to scan for fs, or path to the image tarball for image"
+    required: true   #we must add the path
+  severity:
+    description: Severities that fail the job
+    required: false
+    default: HIGH,CRITICAL   #Have a default value
+  report-name:
+    description: Name for the uploaded SARIF report
+    required: true    #we must add itt
+
+runs:
+  using: composite
+  steps:
+    - name: Trivy filesystem scan
+      if: inputs.scan-type == 'fs'
+      uses: aquasecurity/trivy-action@0.28.0
+      with:
+        scan-type: fs
+        scan-ref: ${{ inputs.target }}
+        scanners: vuln,secret,misconfig
+        severity: ${{ inputs.severity }}
+        ignore-unfixed: true    #Goooooo
+        exit-code: "1"
+        format: sarif
+        output: ${{ inputs.report-name }}.sarif
+
+    - name: Trivy image scan
+      if: inputs.scan-type == 'image'
+      uses: aquasecurity/trivy-action@0.28.0
+      with:
+        input: ${{ inputs.target }}
+        scanners: vuln,secret
+        severity: ${{ inputs.severity }}
+        ignore-unfixed: true
+        exit-code: "1"
+        format: sarif
+        output: ${{ inputs.report-name }}.sarif
+
+    - name: Upload report
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.report-name }}
+        path: ${{ inputs.report-name }}.sarif
+        if-no-files-found: ignore
