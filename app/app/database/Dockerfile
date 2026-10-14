@@ -1,8 +1,4 @@
 FROM postgres:16
 
-ENV POSTGRES_USER=user \
-    POSTGRES_PASSWORD=pass \
-    POSTGRES_DB=mydb
-
 
 EXPOSE 5432

@@ -23,6 +23,10 @@ services:
 
   db:
     build: ./app/database
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass 
+      POSTGRES_DB: mydb
     ports:
       - "5432:5432"
     volumes:
