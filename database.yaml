@@ -82,11 +82,11 @@ spec:
             limits:
               cpu: 500m
               memory: 512Mi
-  volumes:
-        - name: run
-          emptyDir: {}
-        - name: tmp
-          emptyDir: {}
+      volumes:
+            - name: run
+              emptyDir: {}
+            - name: tmp
+              emptyDir: {}
   volumeClaimTemplates:
     - metadata:
         name: db-data
