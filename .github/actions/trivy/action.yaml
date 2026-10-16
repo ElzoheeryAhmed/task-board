@@ -39,6 +39,7 @@ runs:
       with:
         input: ${{ inputs.target }}
         scanners: vuln,secret
+        limit-severities-for-sarif: "true"
         severity: ${{ inputs.severity }}
         ignore-unfixed: true
         exit-code: "1"
