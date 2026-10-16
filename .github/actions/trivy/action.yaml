@@ -26,6 +26,7 @@ runs:
         scan-type: fs
         scan-ref: ${{ inputs.target }}
         scanners: vuln,secret,misconfig
+        limit-severities-for-sarif: "true"
         severity: ${{ inputs.severity }}
         ignore-unfixed: true    #Goooooo
         exit-code: "1"
