@@ -1,6 +1,7 @@
 # LOCAL ONLY image: build the static export, then serve it with nginx (+ /api proxy).
 # In AWS the same ./out folder is uploaded to S3 and served by CloudFront.
 FROM node:22-alpine AS build
+RUN apk upgrade --no-cache
 WORKDIR /app
 COPY package.json package-lock.json* ./
 RUN npm ci || npm install
