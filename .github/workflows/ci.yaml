@@ -52,7 +52,7 @@ jobs:
       - name: Build image
         uses: docker/build-push-action@v6
         with:
-          context: ../../app/app/${{ matrix.service }}
+          context: ./app/app/${{ matrix.service }}
           tags: taskboard-${{ matrix.service }}:${{ github.sha }}
           outputs: type=docker,dest=${{ matrix.service }}.tar
           cache-from: type=gha,scope=${{ matrix.service }}
