@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/ElzoheeryAhmed/task-board.git
     targetRevision: HEAD
-    path: guestbook
+    path: k8s
   destination:
     server: https://kubernetes.default.svc  #kubernetes is default name of svc when i install ArgoCD
     namespace: default
