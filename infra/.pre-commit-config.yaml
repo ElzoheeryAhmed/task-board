@@ -1,0 +1,13 @@
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.96.0 # Use the latest stable release tag
+    hooks:
+      - id: terraform_fmt      # Automatically formats .tf files
+      - id: terraform_validate # Runs 'terraform validate'
+      - id: terraform_trivy
+        args:
+          - --args=--severity=HIGH,CRITICAL
+      # - id: terraform_tflint   # Lints code for potential bugs/best practices
+      - id: terraform_docs     # Generates README.md documentation automatically
+      #- id: terraform_checkov  # Scans for security/compliance misconfigurations
+

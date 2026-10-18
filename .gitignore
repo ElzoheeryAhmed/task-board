@@ -23,3 +23,12 @@ build/
 .vscode/
 .idea/
 .DS_Store
+
+#Terraform ignore
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+input.tfvars
+*.pem
+
