@@ -22,7 +22,7 @@ resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.clusvpc.id
   availability_zone       = local.azs[count.index]
   cidr_block              = cidrsubnet(var.vpc_cidr, 8, count.index + 100)  #if VPC_cidr=/16 this cidr=/16+8=24 (count.index + 100) the number of subnet from 2^8 you have
-  map_public_ip_on_launch = true
+  map_public_ip_on_launch = false
 
   tags = {
     Name                                  = "${local.name}-public-${local.azs[count.index]}"

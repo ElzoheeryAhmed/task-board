@@ -37,6 +37,9 @@ variable "nat_strategy" {
 
 
 
+locals {
+  my_ip_cidr = "${chomp(data.http.myip.response_body)}/32"
+}
 
 
 

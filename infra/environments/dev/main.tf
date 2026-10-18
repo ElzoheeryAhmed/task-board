@@ -21,6 +21,8 @@ module "eks" {
 
   project_name       = var.project_name
   environment        = var.environment
+  
+  api_allowed_cidrs = [local.my_ip_cidr]
 
   # from network
   private_subnet_ids = module.network.private_subnet_ids

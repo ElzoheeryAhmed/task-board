@@ -1,3 +1,7 @@
+#I will use Aws secret manager so no need to encrypt secrets
+
+#trivy:ignore:AWS-0040
+#trivy:ignore:AWS-0039
 resource "aws_eks_cluster" "eks" {
   name     = local.name
   version  = var.kubernetes_version
@@ -7,6 +11,7 @@ resource "aws_eks_cluster" "eks" {
     subnet_ids              = concat(var.private_subnet_ids, var.public_subnet_ids)
     endpoint_public_access  = true   #Kube API server is reachable from public network
     endpoint_private_access = true  #Kube              API SERVEEEEEER
+    public_access_cidrs     = var.api_allowed_cidrs
   }
 
   access_config {

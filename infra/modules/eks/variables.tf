@@ -69,3 +69,9 @@ variable "node_max_size" {
   type    = number
   default = 4
 }
+
+
+variable "api_allowed_cidrs" {
+  description = "CIDRs allowed to reach the public Kubernetes API endpoint"
+  type        = list(string)
+}

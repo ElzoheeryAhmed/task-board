@@ -2,7 +2,7 @@ resource "aws_ecr_repository" "this" {
   for_each = toset(var.ecr_repositories)
 
   name                 = "${var.project_name}/${each.value}"
-  image_tag_mutability = "MUTABLE"
+  image_tag_mutability = "IMMUTABLE"
   force_delete         = true
 
   image_scanning_configuration {
