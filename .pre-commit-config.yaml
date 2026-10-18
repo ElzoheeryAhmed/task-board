@@ -9,5 +9,9 @@ repos:
           - --args=--severity=HIGH,CRITICAL
       # - id: terraform_tflint   # Lints code for potential bugs/best practices
       - id: terraform_docs     # Generates README.md documentation automatically
+        args:
+          - --hook-config=--path-to-file=README.md
+          - --hook-config=--add-to-existing-file=true
+          - --hook-config=--create-file-if-not-exist=true
       #- id: terraform_checkov  # Scans for security/compliance misconfigurations
 
