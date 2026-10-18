@@ -9,8 +9,8 @@ resource "aws_eks_cluster" "eks" {
 
   vpc_config {
     subnet_ids              = concat(var.private_subnet_ids, var.public_subnet_ids)
-    endpoint_public_access  = true   #Kube API server is reachable from public network
-    endpoint_private_access = true  #Kube              API SERVEEEEEER
+    endpoint_public_access  = true #Kube API server is reachable from public network
+    endpoint_private_access = true #Kube              API SERVEEEEEER
     public_access_cidrs     = var.api_allowed_cidrs
   }
 

@@ -49,7 +49,7 @@ data "aws_iam_policy_document" "ebs_csi_assume" {
 
 
 locals {
-  name = "${var.project_name}-${var.environment}"
+  name      = "${var.project_name}-${var.environment}"
   oidc_host = replace(aws_iam_openid_connect_provider.eks.url, "https://", "")
 
 }

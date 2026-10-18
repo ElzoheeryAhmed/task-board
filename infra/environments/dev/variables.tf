@@ -6,15 +6,15 @@ variable "region" {
 
 
 variable "vpc_cidr" {
-  type    = string
+  type = string
 }
 
 variable "project_name" {
-  type    = string
+  type = string
 }
 
 variable "environment" {
-  type    = string
+  type = string
 }
 
 

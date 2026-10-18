@@ -1,6 +1,6 @@
 module "network" {
-  source = "../../modules/network"
-  vpc_cidr = var.vpc_cidr
+  source       = "../../modules/network"
+  vpc_cidr     = var.vpc_cidr
   project_name = var.project_name
   environment  = var.environment
   az_count     = var.az_count
@@ -19,9 +19,9 @@ module "iam" {
 module "eks" {
   source = "../../modules/eks"
 
-  project_name       = var.project_name
-  environment        = var.environment
-  
+  project_name = var.project_name
+  environment  = var.environment
+
   api_allowed_cidrs = [local.my_ip_cidr]
 
   # from network

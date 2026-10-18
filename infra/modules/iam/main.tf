@@ -3,7 +3,7 @@
 #
 resource "aws_iam_role" "cluster" {
   name               = "${local.name}-eks-cluster"
-  assume_role_policy = data.aws_iam_policy_document.eks_assume.json  #Pull policy from AWS
+  assume_role_policy = data.aws_iam_policy_document.eks_assume.json #Pull policy from AWS
 }
 
 #------------------------------
@@ -44,8 +44,8 @@ resource "aws_iam_role_policy_attachment" "node" {
 
 resource "aws_iam_openid_connect_provider" "eks" {
   url             = var.oidc_issuer_url
-  client_id_list  = ["sts.amazonaws.com"] #The issued token is intended for STS"
-  thumbprint_list = [data.tls_certificate.oidc.certificates[0].sha1_fingerprint]  #lets AWS verify the identity of the OIDC issuer’s TLS certificate.
+  client_id_list  = ["sts.amazonaws.com"]                                        #The issued token is intended for STS"
+  thumbprint_list = [data.tls_certificate.oidc.certificates[0].sha1_fingerprint] #lets AWS verify the identity of the OIDC issuer’s TLS certificate.
 }
 
 

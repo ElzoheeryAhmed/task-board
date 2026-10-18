@@ -1,13 +1,13 @@
 variable "vpc_cidr" {
-  type    = string
+  type = string
 }
 
 variable "project_name" {
-  type    = string
+  type = string
 }
 
 variable "environment" {
-  type    = string
+  type = string
 }
 
 
@@ -32,7 +32,7 @@ variable "nat_strategy" {
 
 
 locals {
-  azs  = slice(data.aws_availability_zones.available.names, 0, var.az_count)
-  name = "${var.project_name}-${var.environment}"
+  azs       = slice(data.aws_availability_zones.available.names, 0, var.az_count)
+  name      = "${var.project_name}-${var.environment}"
   nat_count = var.nat_strategy == "per_az" ? var.az_count : 1
 }
